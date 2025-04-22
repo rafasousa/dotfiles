@@ -1,0 +1,45 @@
+[core]
+  editor = code --wait
+  excludesfile = ~/.gitignore
+  autocrlf = input
+[color]
+  branch = auto
+  diff = auto
+  interactive = auto
+  status = auto
+[init]
+  defaultBranch = main
+[web]
+  browser = google-chrome
+[credential]
+  helper = osxkeychain
+[push]
+  default = simple
+[merge]
+    tool = vscode
+[mergetool "vscode"]
+    cmd = code --wait --merge $REMOTE $LOCAL $BASE $MERGED
+[diff]
+    tool = vscode
+[difftool "vscode"]
+    cmd = code --wait --diff $LOCAL $REMOTE
+[difftool]
+  prompt = false
+[alias]
+  c = commit
+  ca = commit -a
+  cm = commit -m
+  cam = commit -am
+  d = diff
+  dc = diff --cached
+  l = log --graph --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset" --abbrev-commit
+  cleanup = !bash -c \"git fetch -p && git branch -vv | grep 'origin/.*: gone]' | awk '{print $1}' | xargs git branch -d\"  
+[pull]
+	rebase = true
+
+[includeIf "gitdir:~/projects/qit/"]
+    path = ~/.gitconfig-qit
+[includeIf "gitdir:~/projects/bs/"]
+    path = ~/.gitconfig-bs
+[includeIf "gitdir:~/projects/sit/"]
+    path = ~/.gitconfig-sit
