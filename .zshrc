@@ -8,8 +8,16 @@
 export VISUAL="code" 
 export EDITOR="code"
 
+# Path to your oh-my-zsh installation.
+export ZSH="$HOME/.oh-my-zsh"
+
 # openssl v3 implementation in Node.js v17
 # export NODE_OPTIONS=--openssl-legacy-provider
+
+# set PATH so it includes nvm
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # Colors.
 unset LSCOLORS
@@ -135,6 +143,7 @@ export COMPOSER_MEMORY_LIMIT=-1
 #shopt -s extdebug
 #trap prod_command_trap DEBUG
 
+# source $ZSH/oh-my-zsh.sh
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
