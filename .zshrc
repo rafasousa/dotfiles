@@ -9,7 +9,7 @@ export VISUAL="code"
 export EDITOR="code"
 
 # openssl v3 implementation in Node.js v17
-export NODE_OPTIONS=--openssl-legacy-provider
+# export NODE_OPTIONS=--openssl-legacy-provider
 
 # Colors.
 unset LSCOLORS
@@ -23,7 +23,7 @@ unsetopt nomatch
 export PS1=$'\n'"%F{green} %*%F %3~ %F{white}"$'\n'"$ "
 
 # Enable plugins.
-plugins=(git brew history kubectl history-substring-search)
+plugins=(git brew history kubectl azure terraform dotnet node history-substring-search)
 
 # Custom $PATH with extra locations.
 export PATH=/opt/homebrew/bin:$HOME/Library/Python/3.12/bin:/usr/local/bin:/usr/local/sbin:$HOME/bin:$HOME/.local/bin:$HOME/go/bin:/usr/local/git/bin:$HOME/.composer/vendor/bin:$PATH
@@ -59,10 +59,6 @@ alias gp='git pull --rebase'
 alias gcam='git commit -am'
 alias gl='git log --graph --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset" --abbrev-commit'
 alias pn=pnpm
-alias ll='ls -lah'
-alias dc='docker-compose'
-alias archicad='open -a ArchiCAD'
-alias code='open -a Code'
 
 # Completions.
 autoload -Uz compinit && compinit

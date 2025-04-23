@@ -1,3 +1,6 @@
+[user]
+  name = Rafael Sousa
+  email = rafael.alves.sousa@outlook.com
 [core]
   editor = code --wait
   excludesfile = ~/.gitignore
@@ -36,10 +39,3 @@
   cleanup = !bash -c \"git fetch -p && git branch -vv | grep 'origin/.*: gone]' | awk '{print $1}' | xargs git branch -d\"  
 [pull]
 	rebase = true
-
-[includeIf "gitdir:~/projects/qit/"]
-    path = ~/.gitconfig-qit
-[includeIf "gitdir:~/projects/bs/"]
-    path = ~/.gitconfig-bs
-[includeIf "gitdir:~/projects/sit/"]
-    path = ~/.gitconfig-sit
