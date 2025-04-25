@@ -9,15 +9,15 @@ export VISUAL="code"
 export EDITOR="code"
 
 # Path to your oh-my-zsh installation.
-export ZSH="$HOME/.oh-my-zsh"
+# export ZSH="$HOME/.oh-my-zsh"
 
 # openssl v3 implementation in Node.js v17
 # export NODE_OPTIONS=--openssl-legacy-provider
 
 # set PATH so it includes nvm
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+  [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
 # Colors.
 unset LSCOLORS
@@ -32,6 +32,9 @@ export PS1=$'\n'"%F{green} %*%F %3~ %F{white}"$'\n'"$ "
 
 # Enable plugins.
 plugins=(git brew history kubectl azure terraform dotnet node history-substring-search)
+
+# This is needed for the dotnet plugin to work.
+export DOTNET_ROOT="/opt/homebrew/opt/dotnet/libexec"
 
 # Custom $PATH with extra locations.
 export PATH=/opt/homebrew/bin:$HOME/Library/Python/3.12/bin:/usr/local/bin:/usr/local/sbin:$HOME/bin:$HOME/.local/bin:$HOME/go/bin:/usr/local/git/bin:$HOME/.composer/vendor/bin:$PATH
@@ -55,6 +58,9 @@ else
     echo "Unknown architecture: ${arch_name}"
 fi
 
+# Zsh Completions
+fpath+=("${share_path}/share/zsh-completions")
+
 # Allow history search via up/down keys.
 source ${share_path}/zsh-history-substring-search/zsh-history-substring-search.zsh
 bindkey "^[[A" history-substring-search-up
@@ -70,6 +76,13 @@ alias pn=pnpm
 
 # Completions.
 autoload -Uz compinit && compinit
+
+# Autosuggestions
+source ${share_path}/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+# Fast Syntax Highlighting
+source ${share_path}/zsh-fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
+
 # Case insensitive.
 zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*'
 
@@ -151,13 +164,15 @@ export COMPOSER_MEMORY_LIMIT=-1
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 
 # ZSH_THEME="spaceship"
-source "$HOMEBREW_PREFIX/opt/spaceship/spaceship.zsh"
-
+source "$(brew --prefix)/opt/spaceship/spaceship.zsh"
+ 
 SPACESHIP_PROMPT_ORDER=(
+  time          # Time stampts section
   user          # Username section
   dir           # Current directory section
   host          # Hostname section
   git           # Git section (git_branch + git_status)
+  package       # Package version
   hg            # Mercurial section (hg_branch  + hg_status)
   exec_time     # Execution time
   line_sep      # Line break
@@ -167,7 +182,12 @@ SPACESHIP_PROMPT_ORDER=(
   node
 )
 
+SPACESHIP_TIME_FORMAT='%t'
+SPACESHIP_TIME_SHOW=true
 SPACESHIP_USER_SHOW=always
+SPACESHIP_CHAR_SYMBOL_SUCCESS=$'╰╼'
+SPACESHIP_CHAR_SYMBOL_FAILURE=$'╰╼'
 SPACESHIP_PROMPT_ADD_NEWLINE=false
-SPACESHIP_CHAR_SYMBOL="❯"
+# SPACESHIP_CHAR_SYMBOL_SUCCESS=" ❯"
+# SPACESHIP_CHAR_SYMBOL_FAILURE=" ❯"
 SPACESHIP_CHAR_SUFFIX=" "
