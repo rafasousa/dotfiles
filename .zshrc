@@ -191,3 +191,17 @@ SPACESHIP_PROMPT_ADD_NEWLINE=false
 # SPACESHIP_CHAR_SYMBOL_SUCCESS=" ❯"
 # SPACESHIP_CHAR_SYMBOL_FAILURE=" ❯"
 SPACESHIP_CHAR_SUFFIX=" "
+
+# Start the ssh-agent if it's not already running
+if ! pgrep -u "$USER" ssh-agent > /dev/null; then
+  eval "$(ssh-agent -s)"
+fi
+
+# Automatically add all private keys from ~/.ssh that are not yet added
+for key in ~/.ssh/id_*; do
+  # Skip if it's a .pub file or doesn't exist
+  if [[ -f "$key" && "$key" != *.pub ]]; then
+    # Add the key only if it's not already loaded
+    ssh-add -l | grep -q "$(ssh-keygen -lf "$key" | awk '{print $2}')" 2>/dev/null || ssh-add --apple-use-keychain "$key" 2>/dev/null
+  fi
+done
