@@ -192,6 +192,18 @@ SPACESHIP_PROMPT_ADD_NEWLINE=false
 # SPACESHIP_CHAR_SYMBOL_FAILURE=" ❯"
 SPACESHIP_CHAR_SUFFIX=" "
 
+# Include aws env vars (if present).
+if [ -f ~/.aws ]
+then
+  source ~/.aws
+fi
+
+# Include azure env vars (if present).
+if [ -f ~/.azure ]
+then
+  source ~/.azure
+fi
+
 # Start the ssh-agent if it's not already running
 if ! pgrep -u "$USER" ssh-agent > /dev/null; then
   eval "$(ssh-agent -s)"
