@@ -8,12 +8,3 @@ set completion-ignore-case on
 # Uncomment to enable vi-like command line editing mode.
 # set editing-mode vi
 
-# Map Home and End keys
-"\e[1~": beginning-of-line
-"\e[4~": end-of-line
-"\e[H": beginning-of-line
-"\e[F": end-of-line
-
-# For word navigation with Ctrl+Arrow
-"\e[1;5C": forward-word
-"\e[1;5D": backward-word

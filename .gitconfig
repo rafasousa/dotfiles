@@ -36,6 +36,5 @@
   cleanup = !bash -c \"git fetch -p && git branch -vv | grep 'origin/.*: gone]' | awk '{print $1}' | xargs git branch -d\"  
 [pull]
 	rebase = true
-
-[include]
-  path = ~/.gitconfig-user
+[rebase]
+  autoStash = true

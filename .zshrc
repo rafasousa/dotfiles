@@ -13,6 +13,7 @@ export EDITOR="code"
 
 # openssl v3 implementation in Node.js v17
 # export NODE_OPTIONS=--openssl-legacy-provider
+export NODE_OPTIONS="--max-old-space-size=4096"
 
 # set PATH so it includes nvm
 export NVM_DIR="$HOME/.nvm"
@@ -202,6 +203,12 @@ fi
 if [ -f ~/.azure ]
 then
   source ~/.azure
+fi
+
+# Include .zprofile (if present) containing aliases for ssh, etc.
+if [ -f ~/.zprofile ]
+then
+  source ~/.zprofile
 fi
 
 # Start the ssh-agent if it's not already running
