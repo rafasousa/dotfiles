@@ -175,6 +175,26 @@ chflags nohidden ~/Library
 # Enable the function keys to behave as standard F1, F2, etc. keys. 
 defaults write NSGlobalDomain UseFunctionKeysAsStandard -bool true
 
+# Set Keyboard shortcuts
+
+# # Application windows use Cmd + Arrow Down
+# defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 64 '{enabled = 1; value = { parameters = (125, 1048576); type = standard; }; }'
+
+# # Mission control use Cmd + Arrow Up
+# defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 63 '{enabled = 1; value = { parameters = (126, 1048576); type = standard; }; }'
+
+# # Mission control move left space use Option + Arrow Left
+# defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 62 '{enabled = 1; value = { parameters = (123, 524288); type = standard; }; }'
+
+# # Mission control move right space use Option + Arrow Right
+# defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 61 '{enabled = 1; value = { parameters = (124, 524288); type = standard; }; }'
+
+# # Disable Move focus to the window toolbar (free up Ctrl + F5)
+# defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 60 '{enabled = 0; value = { parameters = (96, 262144); type = standard; }; }'
+
+# # Disable Show Desktop (free up F11)
+# defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 36 '{enabled = 1; value = { parameters = (65535, 103, 8388608); type = standard; }; }'
+
 ###############################################################################
 # Dock, Dashboard, and hot corners                                            #
 ###############################################################################
@@ -189,10 +209,10 @@ defaults write com.apple.dock expose-animation-duration -float 0.15
 defaults write com.apple.dock showhidden -bool true
 
 # Set the dock position screen
-defaults write com.apple.dock orientation -string "left"
+defaults write com.apple.dock orientation -string "bottom"
 
 # Enable the 'reduce transparency' option. Save GPU cycles.
-defaults write com.apple.universalaccess reduceTransparency -bool true
+# defaults write com.apple.universalaccess reduceTransparency -bool true
 
 # Hot corners
 # Possible values:
@@ -221,9 +241,9 @@ defaults write com.apple.dock wvous-bl-modifier -int 0
 ###############################################################################
 
 # Enable the Develop menu and the Web Inspector in Safari
-defaults write com.apple.Safari IncludeDevelopMenu -bool true
-defaults write com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey -bool true
-defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled -bool true
+# defaults write com.apple.Safari IncludeDevelopMenu -bool true
+# defaults write com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey -bool true
+# defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled -bool true
 
 # Add a context menu item for showing the Web Inspector in web views
 defaults write NSGlobalDomain WebKitDeveloperExtras -bool true
@@ -233,7 +253,7 @@ defaults write NSGlobalDomain WebKitDeveloperExtras -bool true
 ###############################################################################
 
 # Copy email addresses as `foo@example.com` instead of `Foo Bar <foo@example.com>` in Mail.app
-defaults write com.apple.mail AddressesIncludeNameOnPasteboard -bool false
+# defaults write com.apple.mail AddressesIncludeNameOnPasteboard -bool false
 
 ###############################################################################
 # Spotlight                                                                   #
